@@ -1,6 +1,5 @@
 package com.fedex.notification.service.gateway;
 
-import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -26,7 +25,7 @@ public class WhtsAppNotificationGateway
 		System.out.println("url :"+url);
 		RequestEntity<Void> request = RequestEntity.get(url).accept(MediaType.APPLICATION_JSON).build();
 		ResponseEntity<String> response = restTemplate.exchange(request, String.class);
-		if(response.getStatusCode().equals(HttpStatus.SC_OK))
+		if(response.getStatusCode().is2xxSuccessful())
 		{
 			return "Message sent successfully.";
 		}
