@@ -10,9 +10,9 @@ public class UserPreferenceGateway {
 	public UserProfile getUserProfile(long orderID) {
 		UserProfile userProfile;
 		if (orderID % 2 == 0) {
-			userProfile = new UserProfile("Santosh", Long.valueOf("9167202105"), 91, "en");
+			userProfile = new UserProfile("Robert", Long.valueOf("9167202105"), 91, "en");
 		} else {
-			userProfile = new UserProfile("Gupta", Long.valueOf("644707444"), 31, "de");
+			userProfile = new UserProfile("Julian", Long.valueOf("644707444"), 31, "de");
 		}
 
 		return userProfile;
