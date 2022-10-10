@@ -1,5 +1,8 @@
 package com.fedex.notification.service.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -28,6 +31,25 @@ public class NotificationController {
 	public ResponseEntity<String> sendMessage(
 			@NotNull @Parameter(in = ParameterIn.QUERY, description = "", required = false, schema = @Schema()) @Valid @RequestParam(value = "userId", required = true) String userId) {
 		return new ResponseEntity<String>(notificationService.sendWhtsAppNotification(userId), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/v1/deliverydates", produces = { "application/json" }, method = RequestMethod.GET)
+	public ResponseEntity<List<String>> getAlternateDeliveryDates(
+			@NotNull @Parameter(in = ParameterIn.QUERY, description = "", required = false, schema = @Schema()) @Valid @RequestParam(value = "trackingId", required = true) String trackingId,
+			@NotNull @Parameter(in = ParameterIn.QUERY, description = "", required = false, schema = @Schema()) @Valid @RequestParam(value = "language", required = true) String language) {
+		
+		List<String> alternateDeliveryDates = new ArrayList<String>();
+		if (language.equals("en")) {
+			alternateDeliveryDates.add("24-Oct-2022");
+			alternateDeliveryDates.add("25-Oct-2022");
+			alternateDeliveryDates.add("26-Oct-2022");
+		}else if (language.equals("nl")) {
+			alternateDeliveryDates.add("24-Okt-2022");
+			alternateDeliveryDates.add("25-Okt-2022");
+			alternateDeliveryDates.add("26-Okt-2022");
+		}
+		
+		return new ResponseEntity<List<String>>(alternateDeliveryDates, HttpStatus.OK);
 	}
 
 }
