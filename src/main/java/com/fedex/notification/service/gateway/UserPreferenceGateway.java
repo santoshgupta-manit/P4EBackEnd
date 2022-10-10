@@ -7,14 +7,47 @@ import com.fedex.notification.service.model.UserProfile;
 @Component
 public class UserPreferenceGateway {
 
-	public UserProfile getUserProfile(long orderID) {
+	public UserProfile getUserProfile(String userId) {
+		
 		UserProfile userProfile;
-		if (orderID % 2 == 0) {
-			userProfile = new UserProfile("Robert", Long.valueOf("9167202105"), 91, "en");
-		} else {
-			userProfile = new UserProfile("Julian", Long.valueOf("644707444"), 31, "de");
-		}
+		
+		switch(userId) {
+			case "saroj" : 			
+				userProfile = new UserProfile("Saroj", Long.valueOf("626662987"), 31, "en");
+				break;
+			
+			
+			case "pepe" : 			
+				userProfile = new UserProfile("Pepe", Long.valueOf("626662987"), 31, "nl");
+				break;
+			
+			
+			case "amit" : 			
+				userProfile = new UserProfile("Amit", Long.valueOf("9588403341"), 31, "en");
+				break;
+			
+			
+			case "anup" : 			
+				userProfile = new UserProfile("Anup", Long.valueOf("650235394"), 31, "nl");
+				break;
+			
+			
+			case "santosh" : 			
+				userProfile = new UserProfile("Santosh", Long.valueOf("626662987"), 31, "en");
+				break;
+			
+			
+			case "kanchan" : 			
+				userProfile = new UserProfile("Santosh", Long.valueOf("626662987"), 31, "en");
+				break;
+			
+			
+			default : 			
+				userProfile = new UserProfile("Saroj", Long.valueOf("626662987"), 31, "en");
+				break;
+			
 
+		}
 		return userProfile;
 
 	}
