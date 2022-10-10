@@ -70,5 +70,24 @@ public class P4EBackendController {
 		
 		return new ResponseEntity<List<String>>(pickupPoints, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/v1/alternateDeliveryAddresses", produces = { "application/json" }, method = RequestMethod.GET)
+	public ResponseEntity<List<String>> getAlternateDeliveryAddresses(
+			@NotNull @Parameter(in = ParameterIn.QUERY, description = "", required = false, schema = @Schema()) @Valid @RequestParam(value = "trackingId", required = true) String trackingId,
+			@NotNull @Parameter(in = ParameterIn.QUERY, description = "", required = false, schema = @Schema()) @Valid @RequestParam(value = "language", required = true) String language) {
+		
+		List<String> deliveryAddresses = new ArrayList<String>();
+		if (language.equals("en")) {
+			deliveryAddresses.add("Amsterdam");
+			deliveryAddresses.add("Hoofdoorp");
+			deliveryAddresses.add("Rotterdam");
+		}else if (language.equals("nl")) {
+			deliveryAddresses.add("Amsterdam");
+			deliveryAddresses.add("Hoofdoorp");
+			deliveryAddresses.add("Rotterdam");
+		}
+		
+		return new ResponseEntity<List<String>>(deliveryAddresses, HttpStatus.OK);
+	}
 
 }
