@@ -26,8 +26,8 @@ public class NotificationController {
 
 	@RequestMapping(value = "/v1/notification/delivery", produces = { "application/json" }, method = RequestMethod.GET)
 	public ResponseEntity<String> sendMessage(
-			@NotNull @Parameter(in = ParameterIn.QUERY, description = "", required = false, schema = @Schema()) @Valid @RequestParam(value = "trackingId", required = true) long trackingId) {
-		return new ResponseEntity<String>(notificationService.sendWhtsAppNotification(trackingId), HttpStatus.OK);
+			@NotNull @Parameter(in = ParameterIn.QUERY, description = "", required = false, schema = @Schema()) @Valid @RequestParam(value = "userId", required = true) String userId) {
+		return new ResponseEntity<String>(notificationService.sendWhtsAppNotification(userId), HttpStatus.OK);
 	}
 
 }
